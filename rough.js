@@ -10,7 +10,7 @@ const uniqueValues = (arr) => {
     return start + 1
 }
 
-console.log(uniqueValues([1,2,2,2,2,2,4,4,4,6]))
+// console.log(uniqueValues([1,2,2,2,2,2,4,4,4,6]))
 
 //let us do another one
 // let us do the binary search
@@ -33,7 +33,7 @@ const search = (arr, val) => {
     return -1
 }
 
-console.log("Search: ",search([1,2], 2))
+// console.log("Search: ",search([1,2], 2))
 
 const arrSum = (arr,val) => {
   let start = 0;
@@ -49,4 +49,22 @@ const arrSum = (arr,val) => {
   }
 }
 
-console.log(arrSum([1,2,3,4], 7))
+// console.log(arrSum([1,2,3,4], 7))
+// 3 2 1
+// 
+const myInSort = (arr) => {
+  for (let i = 1; i < arr.length; i++) {
+    let initial = arr[i]
+    for (var j = i - 1; j >= 0 && arr[j] > initial; j--) {
+      arr[j + 1] = arr[j] 
+    }
+    arr[j + 1] = initial
+  }
+  return arr
+}
+
+console.log(myInSort([4,1,3,2]))
+
+
+//the sorting algos we have learnt so far does not scale well
+//they are very slow on very small arrays
