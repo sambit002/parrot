@@ -85,7 +85,7 @@ const pivot = (arr, start = 0) => {
     }
   }
   swap (arr, swapIndex, start)
-  console.log(arr)
+  // console.log(arr)
   return swapIndex
 }
 console.log(pivot([1,2,3,6,10,0]))
@@ -106,4 +106,16 @@ const pivot2 = (arr, start = 0) => {
   //we return the swap index
   return swapIndex
 }
+
+// let us try to run the quick sort
+const quicksort = (arr, start = 0, end = arr.length) => {
+  if (start < end) {
+    const piv = pivot(arr, start, end)
+    quicksort(arr, start, piv - 1)
+    quicksort(arr, piv + 1, end)
+  }
+  return arr
+}
+
+console.log("quick sorted: ",quicksort([5,1,10,2,4]))
 
