@@ -19,4 +19,4 @@ const returnOddVals = (arr) => {
     return res
 }
 
-console.log(returnOddVals([4,8,10,13, 21,15, 16]))
+console.log(returnOddVals([4,8,10,13, 21,15,16]))

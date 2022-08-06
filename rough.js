@@ -63,8 +63,28 @@ const myInSort = (arr) => {
   return arr
 }
 
-console.log(myInSort([4,1,3,2]))
+const swap = (arr, i, j) => {
+  let temp;
+  temp = arr[i]
+  arr[i] = arr[j]
+  arr[j] = temp
+  return arr
+}
 
+// console.log(swap([4,6,5], 2, 0))
+// console.log(myInSort([4,1,3,2]))
+// we shall see how to make sense of a pivot function
+const pivot = (arr, start = 0) => {
+  let swapIndex = start
+  let pivot = arr[start]
+  for (var i = start + 1; i < arr.length; i++) {
+    if (pivot > arr[i]) {
+      swapIndex++
+      swap(arr, i, swapIndex)
+    }
+  }
+  swap(arr, start, swapIndex)
+  return swapIndex
+}
+console.log(pivot([4,2,10,1,3,99]))
 
-//the sorting algos we have learnt so far does not scale well
-//they are very slow on very small arrays
