@@ -90,3 +90,20 @@ const pivot = (arr, start = 0) => {
 }
 console.log(pivot([1,2,3,6,10,0]))
 
+const pivot2 = (arr, start = 0) => {
+  let swapIndex = start // we always start from index 0
+  let pivotElem = arr[start] // pivot is an element
+  for (let i = start + 1; i < arr.length; i++) {
+    // we check for elements less than the pivot
+    if (arr[i] < pivotElem) {
+      swapIndex++
+      swap(arr, swapIndex, i)
+    }
+  }
+  //final step
+  // we swap the start index and swap index
+  swap(arr, swapIndex, start)
+  //we return the swap index
+  return swapIndex
+}
+
