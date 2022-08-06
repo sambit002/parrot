@@ -71,20 +71,22 @@ const swap = (arr, i, j) => {
   return arr
 }
 
-// console.log(swap([4,6,5], 2, 0))
-// console.log(myInSort([4,1,3,2]))
-// we shall see how to make sense of a pivot function
+// [1,2,3,6,10,0] >> input
+// [1,0,3,6,10,2]
+// [0,1,3,6,10,2]
+// we return swapindex = 1
 const pivot = (arr, start = 0) => {
   let swapIndex = start
-  let pivot = arr[start]
-  for (var i = start + 1; i < arr.length; i++) {
-    if (pivot > arr[i]) {
+  let pivotElement = arr[start]
+  for (let i = start + 1; i < arr.length; i++) {
+    if (pivotElement > arr[i]) {
       swapIndex++
-      swap(arr, i, swapIndex)
+      swap(arr, swapIndex, i)
     }
   }
-  swap(arr, start, swapIndex)
+  swap (arr, swapIndex, start)
+  console.log(arr)
   return swapIndex
 }
-console.log(pivot([4,2,10,1,3,99]))
+console.log(pivot([1,2,3,6,10,0]))
 
