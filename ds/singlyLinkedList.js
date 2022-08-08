@@ -81,11 +81,31 @@ class SinglyLinkedList {
         this.length++
         return this
     }
+
+    get(index) {
+        if (index < 0 || index >= this.length) return null
+        let counter = 0
+        let current = this.head
+        while (counter !== index) {
+            current = current.next
+            counter++
+        }
+        return current
+    }
+
+    set(val, index) {
+        let node = this.get(index)
+        if (!node) return false
+        node.val = val
+        return true
+    }
 }
 
 let lst = new SinglyLinkedList()
 lst.push(10)
 lst.push(20)
 lst.unshift(5)
-console.log(lst)
-console.log(lst.head.next.next)
+// console.log(lst.get(0))
+lst.set(40, 1)
+console.log(lst.get(1).next)
+console.log(lst) 
