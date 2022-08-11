@@ -99,13 +99,35 @@ class SinglyLinkedList {
         node.val = val
         return true
     }
+
+    insert(val, index) {
+        if (index < 0 || index > this.length) return false
+        if (index === length) return this.push(val)
+        if (index === 0) return this.unshift(val)
+        let newnode = new Node(val)
+        let prev = this.get(index - 1)
+        let temp = prev.next
+        prev.next = newnode
+        newnode.next = temp
+    }
+
+    remove(index) {
+        if (index < 0 || index > this.length) return false
+        if (index === 0) return this.shift(index)
+        if (index === this.length - 1) return this.pop(index)
+        let prev = this.get(index - 1)
+        let removed = prev.next
+        prev.next = removed.next
+        return removed
+    }
+
+    reverse() {
+        //this is an important one
+    }
 }
 
 let lst = new SinglyLinkedList()
-lst.push(10)
-lst.push(20)
-lst.unshift(5)
-// console.log(lst.get(0))
-lst.set(40, 1)
-console.log(lst.get(1).next)
-console.log(lst) 
+lst.push(5)
+console.log(lst)
+lst.unshift(2)
+console.log(lst)
