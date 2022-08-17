@@ -88,7 +88,7 @@ const pivot = (arr, start = 0) => {
   // console.log(arr)
   return swapIndex
 }
-console.log(pivot([1,2,3,6,10,0]))
+// console.log(pivot([1,2,3,6,10,0]))
 
 const pivot2 = (arr, start = 0) => {
   let swapIndex = start // we always start from index 0
@@ -117,5 +117,38 @@ const quicksort = (arr, start = 0, end = arr.length) => {
   return arr
 }
 
-console.log("quick sorted: ",quicksort([5,1,10,2,4]))
+// console.log("quick sorted: ",quicksort([5,1,10,2,4]))
+// let us recursively try to implement
+// substring program
+
+const exactmatch = (text, pattern, textIndex, patternIndex) => {
+  // check if we have reached the end of text
+  // but not the end of pattern
+  // return false in that case
+  if (textIndex === text.length && patternIndex !== pattern.length) return false
+  // we can check if we have successfully reached the end of pattern
+  // we can travel to the end of pattern only if we find matching letters
+  if (patternIndex === pattern.length) return true
+
+  if (text[textIndex] === pattern[patternIndex]) {
+    return exactmatch(text, pattern, textIndex + 1, patternIndex + 1)
+  }
+
+}
+
+const contains = (text, pattern, textIndex, patternIndex) => {
+  //check we have reached the end
+  if (textIndex === text.length) return false
+
+  if (text[textIndex] === pattern[patternIndex]) {
+    if (exactmatch(text, pattern, textIndex, patternIndex)) {
+      return true
+    } else return contains(text, pattern, textIndex + 1, patternIndex)
+  }
+
+  return contains(text, pattern, textIndex + 1, patternIndex)
+}
+
+console.log(contains('axzomzz', "zol", 0, 0))
+
 
