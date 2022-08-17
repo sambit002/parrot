@@ -109,12 +109,28 @@ class DoublyLinkedList {
         afternode.prev = newnode
         newnode.next = afternode
         this.length++
-        return true 
+        return true  
+    }
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined
+        if (index === 0) return this.shift()
+        if (index === this.length - 1) return this.pop()
+        let toRemove = this.get(index)
+        let oneLess = this.get(index - 1)
+        oneLess.next = toRemove.next
+        toRemove.next.prev = oneLess
+        toRemove.next = null
+        toRemove.prev = null
+        this.length--
+        return toRemove
     }
 }
 
 let dls = new DoublyLinkedList()
 dls.push(10)
 dls.unshift(5)
-console.log(dls.tail)
-console.log(dls.get(1))
+dls.push(15)
+// console.log(dls.tail)
+// console.log(dls.get(1))
+// console.log(dls)
+console.log(dls.remove(1))
