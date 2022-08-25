@@ -121,34 +121,36 @@ const quicksort = (arr, start = 0, end = arr.length) => {
 // let us recursively try to implement
 // substring program
 
-const exactmatch = (text, pattern, textIndex, patternIndex) => {
-  // check if we have reached the end of text
-  // but not the end of pattern
-  // return false in that case
-  if (textIndex === text.length && patternIndex !== pattern.length) return false
-  // we can check if we have successfully reached the end of pattern
-  // we can travel to the end of pattern only if we find matching letters
-  if (patternIndex === pattern.length) return true
+const match = (text, pattern, tindex, pindex) => {
+  // we shall check for the end of text and pattern
+  if (tindex === text.length && pindex !== pattern.length) return false
 
-  if (text[textIndex] === pattern[patternIndex]) {
-    return exactmatch(text, pattern, textIndex + 1, patternIndex + 1)
+  // if we have reached till the end of pattern
+  // that means we have found a match
+  // so we return true
+  if (pindex === pattern.length) return true
+  
+  if (text[tindex] === pattern[pindex]) {
+    return match(text, pattern, tindex + 1, pindex + 1)
   }
-
+  
+  return 0
 }
 
-const contains = (text, pattern, textIndex, patternIndex) => {
-  //check we have reached the end
-  if (textIndex === text.length) return false
-
-  if (text[textIndex] === pattern[patternIndex]) {
-    if (exactmatch(text, pattern, textIndex, patternIndex)) {
+const contains = (text, pattern, tindex, pindex) => {
+  if (tindex === text.length) return false
+  
+  if (text[tindex] === pattern[pindex]) {
+    if (match(text, pattern, tindex, pindex)) {
       return true
-    } else return contains(text, pattern, textIndex + 1, patternIndex)
+    } else {
+      return contains(text, pattern, tindex + 1, pindex)
+    }
   }
-
-  return contains(text, pattern, textIndex + 1, patternIndex)
+  
+  return contains(text, pattern, tindex + 1, pindex)
 }
 
-console.log(contains('axzomzz', "zol", 0, 0))
+console.log(contains("Sambit", "Sam", 0, 0))
 
 
