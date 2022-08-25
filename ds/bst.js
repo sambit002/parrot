@@ -39,6 +39,21 @@ class BinarySearchTree {
             }
         }
     }
+    find(v) {
+        if (!this.root) return false
+        let current = this.root
+        let found = false
+        while (current && !found) {
+            if (v < current.val) {
+                current = current.left
+            } else if (v > current.val) {
+                current = current.right
+            } else {
+                found = true
+            }
+        }
+        return found
+    }
 }
 
 let bst = new BinarySearchTree()
@@ -47,6 +62,8 @@ bst.insert(8)
 bst.insert(5)
 bst.insert(15)
 console.log(bst)
+console.log(bst.find(5))
+console.log(bst.find(22))
 
 
 
