@@ -1,4 +1,5 @@
 // here I shall be writing a hash table class
+// we prevent collision by linear probing and separate chaining
 class HashTable {
     constructor(size=53) {
         this.keyMap = new Array(size)
