@@ -32,8 +32,41 @@ class HashTable {
         return undefined
 
     }
+    
+    values() {
+        let vals = []
+        if (!this.keyMap.length) return vals
+        for (let i = 0; i < this.keyMap.length; i++) {
+            if (this.keyMap[i]) {
+                for (let j = 0; j < this.keyMap[i].length; j++) {
+                    if (!vals.includes(this.keyMap[i][j][1]))
+                        vals.push(this.keyMap[i][j][1])
+                }
+            }
+        }
+        return vals
+    }
+
+    keys() {
+        let keys = []
+        if (!this.keyMap.length) return keys
+        for (let i = 0; i < this.keyMap.length; i++) {
+            if (this.keyMap[i]) {
+                for (let j = 0; j < this.keyMap[i].length; j++) {
+                    if (!keys.includes(this.keyMap[i][j][0]))
+                        keys.push(this.keyMap[i][j][0])
+                }
+            }
+        }
+        return keys
+    }
 }
 
-let ht = new HashTable()
+let ht = new HashTable(17)
 ht.set("Sam", "Jeuty")
-console.log(ht)
+ht.set("psg", "france")
+ht.set("milan", "italy")
+ht.set("bayern", "germany")
+console.log(ht.keyMap)
+console.log(ht.values())
+console.log(ht.keys())
