@@ -5,7 +5,7 @@ class HashTable {
         this.keyMap = new Array(size)
     }
 
-    _hash(key) {
+    _hash(key) { //here key is the string
         let total = 0
         let prime = 31
         for (let i = 0; i < Math.min(key.length, 100); i++) {
@@ -25,9 +25,15 @@ class HashTable {
     }
 
     get(key) {
+        let index = this._hash(key)
+        if (this.keyMap[index]) {
+            return this.keyMap[index]
+        }
+        return undefined
 
     }
 }
 
 let ht = new HashTable()
 ht.set("Sam", "Jeuty")
+console.log(ht)
